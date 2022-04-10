@@ -1,0 +1,16 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.desktop {
+  flex: 1;
+}
+
+.dock-container{
+  min-height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

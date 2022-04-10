@@ -7,7 +7,7 @@ set -e
 npm run build
 
 rm -rf docs
-cp dist docs
+cp -r dist docs
 
 git pull
 git add .

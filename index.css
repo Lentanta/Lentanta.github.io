@@ -2,8 +2,9 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-html{
-  min-height: -webkit-fill-available;
+html {
+  height: fill-available;
+  height: -webkit-fill-available;
 }
 
 html, body, div, span, applet, object, iframe,

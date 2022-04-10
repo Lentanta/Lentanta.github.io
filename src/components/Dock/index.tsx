@@ -1,14 +1,34 @@
+
+import { useContext } from 'react';
+import { useSpring, animated } from 'react-spring'
+import { AppContext } from '../../contexts/AppContext';
+
 import "./style.css";
 
-const Dock = () => {
-  return (
-    <div id="dock-component">
+type PropsType = {
+  selectedTab: string;
+  setSelectedTab: (option: string) => any;
+}
 
-      <a href="https://github.com/Lentanta" target="_blank">
-        <button onMouseOver={() => console.log("HELLO")} >
-          <img src="/assets/png/github-icon.png" />
-        </button>
-      </a>
+const Dock = (props: PropsType) => {
+  const { setSelectedTab, selectedTab } = props;
+  const appContext = useContext(AppContext);
+  const dockStyles = appContext.dockStyles;
+
+  const styleProps = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: 1 },
+    delay: 100,
+  })
+
+  console.log(dockStyles)
+
+  return (
+    <animated.div id="dock-component" style={{ ...styleProps, ...dockStyles }}>
+
+      <button onClick={() => setSelectedTab("github")}>
+        <img src="/assets/png/github-icon.png" />
+      </button>
 
       <a href="https://www.linkedin.com/in/thanh-t%C3%A2m-l%C3%AA-b95878193/" target="_blank" >
         <button>
@@ -21,7 +41,11 @@ const Dock = () => {
           <img src="/assets/png/deviantart.png" />
         </button>
       </a>
-    </div>
+
+      <button onClick={() => setSelectedTab("options")}>
+        <img src="/assets/png/gear-option.png" />
+      </button>
+    </animated.div>
   )
 }
 export default Dock;

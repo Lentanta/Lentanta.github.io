@@ -6,8 +6,9 @@ set -e
 # build
 npm run build
 
-mv dist docs
+cp -r dist docs
 
+git pull
 git add .
 git commit -m "Build and deloy"
 git push origin main

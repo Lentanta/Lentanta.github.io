@@ -11,9 +11,10 @@ const TabHOC = (props: { children: ReactChild }) => {
   })
 
   const normalStyle = {
-    margin: "5px 30px",
+    margin: "5px auto",
     borderRadius: "4px",
-    backgroundColor: "white"
+    backgroundColor: "rgba(255, 255, 255, 0.7)",
+    maxWidth: "1024px"
   }
 
   return (

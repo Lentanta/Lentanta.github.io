@@ -6,7 +6,8 @@ set -e
 # build
 npm run build
 
-cp -r dist docs
+rm -rf docs
+cp dist docs
 
 git pull
 git add .

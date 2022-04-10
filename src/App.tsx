@@ -29,7 +29,6 @@ function App() {
         <div className="desktop">
           {selectedTab === "github" && <InformationLayout />}
           {selectedTab === "options" && <OptionsLayout setSiteOptions={setSiteOptions} />}
-
         </div>
       </div>
     </AppContext.Provider>

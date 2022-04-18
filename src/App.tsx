@@ -2,6 +2,7 @@ import { useEffect, useState, useContext } from 'react'
 import { AppContext } from "./contexts/AppContext";
 
 import axios from "axios";
+import { useStore } from "@store";
 
 import Dock from "./components/Dock";
 import InformationLayout from "./layouts/InformationLayout";
@@ -11,13 +12,16 @@ import OptionsLayout from "./layouts/OptionsLayout";
 import './App.css'
 
 function App() {
-  const getHttpsApi = () => {
-    axios.get("https://dog.ceo/api/breeds/image/random")
-      .then((response) => {
-        console.log(response)
-      })
+  const setGithubInfo = useStore((state: any) => state.setGithubInfo)
 
-  }
+  const handleGetGithubInfo = async () => {
+    try {
+      const { data } = await axios.get("https://api.github.com/users/Lentanta");
+      setGithubInfo(data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   const appContext = useContext(AppContext);
 
@@ -25,7 +29,7 @@ function App() {
   const [siteOptions, setSiteOptions] = useState(appContext);
 
   useEffect(() => {
-    getHttpsApi();
+    handleGetGithubInfo();
     document.body.style.backgroundImage = `url("/assets/png/catwall.jpg")`;
   }, [])
 

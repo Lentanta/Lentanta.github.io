@@ -3,7 +3,9 @@ import { useContext } from 'react';
 import { useSpring, animated } from 'react-spring'
 import { AppContext } from '../../contexts/AppContext';
 
+import { tabs } from "@constants";
 import "./style.css";
+
 
 type PropsType = {
   selectedTab: string;
@@ -24,11 +26,11 @@ const Dock = (props: PropsType) => {
   return (
     <animated.div id="dock-component" style={{ ...styleProps, ...dockStyles }}>
 
-      <button onClick={() => setSelectedTab("github")}>
+      <button onClick={() => setSelectedTab(tabs.INFORMATION)}>
         <img src="/assets/png/github-icon.png" />
       </button>
 
-      <a href="https://www.linkedin.com/in/thanh-t%C3%A2m-l%C3%AA-b95878193/" target="_blank" >
+      {/* <a href="https://www.linkedin.com/in/thanh-t%C3%A2m-l%C3%AA-b95878193/" target="_blank" >
         <button>
           <img src="/assets/png/linkedin.png" />
         </button>
@@ -38,9 +40,9 @@ const Dock = (props: PropsType) => {
         <button>
           <img src="/assets/png/deviantart.png" />
         </button>
-      </a>
+      </a> */}
 
-      <button onClick={() => setSelectedTab("options")}>
+      <button onClick={() => setSelectedTab(tabs.OPTIONS)}>
         <img src="/assets/png/gear-option.png" />
       </button>
     </animated.div>

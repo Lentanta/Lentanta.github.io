@@ -3,16 +3,19 @@ import { AppContext } from "./contexts/AppContext";
 
 import axios from "axios";
 import { useStore } from "@store";
+import { tabs } from "@constants";
 
 import Dock from "./components/Dock";
 import InformationLayout from "./layouts/InformationLayout";
 import OptionsLayout from "./layouts/OptionsLayout";
 
-
 import './App.css'
 
 function App() {
-  const setGithubInfo = useStore((state: any) => state.setGithubInfo)
+  const setGithubInfo = useStore((state: any) => state.setGithubInfo);
+  
+  const selectedTab = useStore((state: any) => state.selectedTab);
+  const setSelectedTab = useStore((state: any) => state.setSelectedTab);
 
   const handleGetGithubInfo = async () => {
     try {
@@ -24,8 +27,6 @@ function App() {
   };
 
   const appContext = useContext(AppContext);
-
-  const [selectedTab, setSelectedTab] = useState("github");
   const [siteOptions, setSiteOptions] = useState(appContext);
 
   useEffect(() => {
@@ -43,8 +44,8 @@ function App() {
         </div>
 
         <div className="desktop">
-          {selectedTab === "github" && <InformationLayout />}
-          {selectedTab === "options" && <OptionsLayout setSiteOptions={setSiteOptions} />}
+          {selectedTab === tabs.INFORMATION && <InformationLayout />}
+          {selectedTab === tabs.OPTIONS && <OptionsLayout setSiteOptions={setSiteOptions} />}
         </div>
       </div>
     </AppContext.Provider>

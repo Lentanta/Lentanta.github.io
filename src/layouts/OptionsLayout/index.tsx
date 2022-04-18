@@ -5,8 +5,7 @@ import TabHOC from '../../components/TabHOC';
 const OptionsLayout = (props: any) => {
   const appContext = useContext(AppContext);
   const { setSiteOptions } = props;
-  console.log(appContext.dockStyles.columnGap)
-
+  
   const dockStyles = appContext.dockStyles;
 
   const handleSet = (event: any) => {

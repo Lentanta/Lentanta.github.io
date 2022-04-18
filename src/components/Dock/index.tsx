@@ -21,8 +21,6 @@ const Dock = (props: PropsType) => {
     delay: 100,
   })
 
-  console.log(dockStyles)
-
   return (
     <animated.div id="dock-component" style={{ ...styleProps, ...dockStyles }}>
 

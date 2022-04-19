@@ -1,13 +1,12 @@
-const createUiState = (set: any, get: any) => ({
-  DockStyle: {
-    iconsGap: 0,
+const createUiState= (set: any, get: any) => ({
+  dockStyle: {
+    iconsGap: 10,
   },
 
-  setIconsGap: (data: number) => {
-    set((prevState: any) => ({
-      ...prevState.DockStyle,
-      iconsGap: data
-    }))
+  setIconsGap: (spaceNum: number) => {
+    set((state: any) => {
+      state.dockStyle.iconsGap = spaceNum;
+    })
   }
 });
 

@@ -1,32 +1,18 @@
-import { useContext } from 'react';
-import { AppContext } from '../../contexts/AppContext';
-import TabHOC from '../../components/TabHOC';
+import TabHOC from '@components/TabHOC';
+import { useStore } from '@store';
 
-const OptionsLayout = (props: any) => {
-  const appContext = useContext(AppContext);
-  const { setSiteOptions } = props;
-
-  const dockStyles = appContext.dockStyles;
-
-  const handleSet = (event: any) => {
-    const newGap = parseInt(event.target.value);
-    const newStyle = { ...dockStyles, columnGap: newGap };
-    setSiteOptions({ ...appContext, dockStyles: newStyle })
-  };
+const OptionsLayout = () => {
+  const dockStyle = useStore((state: any) => state.dockStyle);
+  const setIconsGap = useStore((state: any) => state.setIconsGap);
 
   return (
     <TabHOC>
       <form>
-        {/* <button onClick={handleSet}>-</button> */}
-        <p>Dock icons gap: {dockStyles.columnGap}</p>
-        {/* <button onClick={handleSet1}>+</button> */}
+        <label>Dock icons gap: {dockStyle.iconsGap}</label><br />
+        <input type="range" id="volume" name="volume" min="0" max="30"
+          onChange={(e) => setIconsGap(parseInt(e.target.value))}
+          value={dockStyle.iconsGap} />
 
-        <input type="range" id="volume" name="volume"
-          min="0" max="30"
-          onChange={(e) => handleSet(e)}
-          value={dockStyles.columnGap} />
-
-        <button>Save</button>
       </form>
     </TabHOC >
   )

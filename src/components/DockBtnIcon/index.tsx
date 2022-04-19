@@ -25,7 +25,6 @@ const DockButton = styled.button`
   -webkit-font-smoothing: inherit;
   -moz-osx-font-smoothing: inherit;
   -webkit-appearance: none;
-
   cursor: pointer;
 
   min-width: 60px;
@@ -37,5 +36,30 @@ const DockButton = styled.button`
 
   &:active {
     background-color: rgba(169, 183, 202, 0.3);
+  }
+
+  img {
+    border-radius: 8px;
+    width: 32px;
+    height: 32px;
+
+    /* iOS Safari */
+    -webkit-touch-callout: none;
+    /* Safari */
+    -webkit-user-select: none;
+    /* Konqueror HTML */
+    -khtml-user-select: none;
+    /* Old versions of Firefox */
+    -moz-user-select: none;
+    /* Internet Explorer/Edge */
+    -ms-user-select: none;
+    /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+    user-select: none;
+  }
+
+  @media only screen and (max-width: 768px) {
+    &:hover {
+      background-color: transparent;
+    }
   }
 `

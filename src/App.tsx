@@ -21,13 +21,11 @@ function App() {
     try {
       const { data } = await axios.get("https://api.github.com/users/Lentanta");
       setGithubInfo(data);
+      console.log("Fetch Github info successfully!") 
     } catch (err) {
       console.error(err);
     }
   };
-
-  const appContext = useContext(AppContext);
-  const [siteOptions, setSiteOptions] = useState(appContext);
 
   useEffect(() => {
     handleGetGithubInfo();
@@ -35,20 +33,18 @@ function App() {
   }, [])
 
   return (
-    <AppContext.Provider value={siteOptions}>
-      <div className="App">
-        <div className="dock-container">
-          <DockLayout
-            selectedTab={selectedTab}
-            setSelectedTab={setSelectedTab} />
-        </div>
-
-        <div className="desktop">
-          {selectedTab === tabs.INFORMATION && <InformationLayout />}
-          {selectedTab === tabs.OPTIONS && <OptionsLayout setSiteOptions={setSiteOptions} />}
-        </div>
+    <div className="App">
+      <div className="dock-container">
+        <DockLayout
+          selectedTab={selectedTab}
+          setSelectedTab={setSelectedTab} />
       </div>
-    </AppContext.Provider>
+
+      <div className="desktop">
+        {selectedTab === tabs.INFORMATION && <InformationLayout />}
+        {selectedTab === tabs.OPTIONS && <OptionsLayout />}
+      </div>
+    </div>
   )
 }
 

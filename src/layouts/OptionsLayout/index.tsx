@@ -5,7 +5,7 @@ import TabHOC from '../../components/TabHOC';
 const OptionsLayout = (props: any) => {
   const appContext = useContext(AppContext);
   const { setSiteOptions } = props;
-  
+
   const dockStyles = appContext.dockStyles;
 
   const handleSet = (event: any) => {
@@ -16,7 +16,7 @@ const OptionsLayout = (props: any) => {
 
   return (
     <TabHOC>
-      <div style={{ padding: "10px", }}>
+      <form>
         {/* <button onClick={handleSet}>-</button> */}
         <p>Dock icons gap: {dockStyles.columnGap}</p>
         {/* <button onClick={handleSet1}>+</button> */}
@@ -25,7 +25,9 @@ const OptionsLayout = (props: any) => {
           min="0" max="30"
           onChange={(e) => handleSet(e)}
           value={dockStyles.columnGap} />
-      </div>
+
+        <button>Save</button>
+      </form>
     </TabHOC >
   )
 }

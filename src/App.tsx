@@ -5,7 +5,7 @@ import axios from "axios";
 import { useStore } from "@store";
 import { tabs } from "@constants";
 
-import Dock from "./components/Dock";
+import DockLayout from "./layouts/DockLayout";
 import InformationLayout from "./layouts/InformationLayout";
 import OptionsLayout from "./layouts/OptionsLayout";
 
@@ -13,7 +13,7 @@ import './App.css'
 
 function App() {
   const setGithubInfo = useStore((state: any) => state.setGithubInfo);
-  
+
   const selectedTab = useStore((state: any) => state.selectedTab);
   const setSelectedTab = useStore((state: any) => state.setSelectedTab);
 
@@ -38,7 +38,7 @@ function App() {
     <AppContext.Provider value={siteOptions}>
       <div className="App">
         <div className="dock-container">
-          <Dock
+          <DockLayout
             selectedTab={selectedTab}
             setSelectedTab={setSelectedTab} />
         </div>
